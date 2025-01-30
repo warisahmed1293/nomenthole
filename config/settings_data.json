@@ -150,10 +150,74 @@
               "question": "CAN I MAKE MODIFICATIONS TO MY ORDER AFTER ITS BEEN PLACED?",
               "answer": "Once an order has been confirmed, it can't be modified or adjusted."
             }
+          },
+          "faq_baynda": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_kxfm6a": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_WaNx3X": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_eiiYYR": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_8N3GQC": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_J6fYU4": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_RJYbzF": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          },
+          "faq_36kA3t": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
           }
         },
         "block_order": [
-          "faq_9iQNKm"
+          "faq_9iQNKm",
+          "faq_baynda",
+          "faq_kxfm6a",
+          "faq_WaNx3X",
+          "faq_eiiYYR",
+          "faq_8N3GQC",
+          "faq_J6fYU4",
+          "faq_RJYbzF",
+          "faq_36kA3t"
         ],
         "settings": {}
       }
