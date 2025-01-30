@@ -3595,3 +3595,13 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+#cart-icon-bubble {
+  text-decoration: none;
+  
+}
+
+.header__icon--search{
+  text-decoration: none;
+  padding-right: 20px;
+}

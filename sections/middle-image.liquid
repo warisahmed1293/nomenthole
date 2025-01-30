@@ -1,0 +1,75 @@
+{% schema %}
+{
+  "name": "Middle Image Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "middle_image",
+      "label": "Upload Image"
+    },
+    {
+      "type": "url",
+      "id": "image_link",
+      "label": "Image Clickable Link"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "label": "Image Width (in %)",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "label": "Image Height (in px)",
+      "min": 100,
+      "max": 800,
+      "step": 50,
+      "default": 400
+    }
+  ],
+  "presets": [
+    {
+      "name": "Middle Image"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="middle-image-section">
+  {% if section.settings.middle_image %}
+    <a href="{{ section.settings.image_link | default: '#' }}" class="middle-image-link">
+      <img 
+        src="{{ section.settings.middle_image | img_url: 'master' }}" 
+        alt="Middle Image" 
+        class="middle-image"
+        style="width: {{ section.settings.image_width }}%; height: {{ section.settings.image_height }}px;"
+      >
+    </a>
+  {% else %}
+    <p>Please upload an image in the section settings.</p>
+  {% endif %}
+</div>
+
+<style>
+.middle-image-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 80vh;
+}
+
+.middle-image {
+  display: block;
+  object-fit: cover;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.middle-image:hover {
+  opacity: 0.8;
+}
+</style>
