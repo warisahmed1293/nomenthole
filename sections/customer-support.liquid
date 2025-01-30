@@ -1,0 +1,238 @@
+<div id="customer-support" class="tab-content">
+    <div class="support-container">
+        <!-- Contact Form Section -->
+        <div class="contact-form">
+            <h2>CONTACT US</h2>
+            <form method="post" action="/contact#contact_form" id="contact_form">
+                <div class="form-group">
+                    <label for="name">NAME</label>
+                    <input type="text" id="name" name="contact[name]" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">EMAIL</label>
+                    <input type="email" id="email" name="contact[email]" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="order-number">ORDER NUMBER</label>
+                    <input type="text" id="order-number" name="contact[order-number]">
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">SUBJECT</label>
+                    <select id="subject" name="contact[subject]">
+                        <option value="GENERAL INQUIRY">GENERAL INQUIRY</option>
+                        <option value="ORDER ISSUE">ORDER ISSUE</option>
+                        <option value="RETURN REQUEST">RETURN REQUEST</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">MESSAGE</label>
+                    <textarea id="message" name="contact[body]" required></textarea>
+                </div>
+
+                <button type="submit">SUBMIT</button>
+            </form>
+
+            <div class="contact-details">
+                <p><a href="mailto:support@stussy.com">SUPPORT@STUSSY.COM</a></p>
+                <p>CUSTOMER SUPPORT HOURS</p>
+                <p>MONDAY – FRIDAY 8:00 AM - 4:00 PM PST</p>
+                <p>EXCLUDING WEEKENDS AND MAJOR HOLIDAYS</p>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2>FREQUENTLY ASKED QUESTIONS</h2>
+
+            {% for block in section.blocks %}
+                <div class="faq-item">
+                    <button class="faq-question">{{ block.settings.question }}</button>
+                    <div class="faq-answer">{{ block.settings.answer }}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<style>
+/* General Layout */
+/* General Layout */
+.support-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 60px 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Make All Text Automatically Uppercase */
+.support-container, 
+.contact-form, 
+.faq-section, 
+.contact-details {
+    text-transform: uppercase;
+}
+
+/* Contact Form Section */
+.contact-form {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 50px;
+}
+.contact-form h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.contact-form label {
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    margin-bottom: 5px;
+}
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    padding: 12px;
+    border: none;
+    border-bottom: 2px solid #000;
+    width: 100%;
+    font-size: 14px;
+    background: transparent;
+    text-transform: uppercase; /* Ensure user input is also in uppercase */
+}
+.contact-form button {
+    background-color: #000;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s;
+    text-transform: uppercase; /* Ensure button text is capitalized */
+}
+.contact-form button:hover {
+    background-color: #444;
+}
+
+/* Contact Details */
+.contact-details {
+    margin-top: 30px;
+    font-size: 12px;
+    text-align: left;
+}
+.contact-details a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+/* FAQ Section */
+.faq-section {
+    flex: 1;
+    max-width: 50%;
+}
+.faq-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.faq-item {
+    border-bottom: 1px solid #000;
+    padding: 15px 0;
+    cursor: pointer;
+}
+.faq-question {
+    font-size: 14px;
+    font-weight: bold;
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.faq-answer {
+    display: none;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .support-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .contact-form, .faq-section {
+        max-width: 100%;
+    }
+    .contact-form {
+        padding-right: 0;
+    }
+}
+
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".faq-question").forEach(button => {
+            button.addEventListener("click", function () {
+                let answer = this.nextElementSibling;
+                answer.style.display = (answer.style.display === "block") ? "none" : "block";
+            });
+        });
+    });
+    
+    
+</script>
+
+{% schema %}
+{
+    "name": "Customer Support",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "faq",
+            "name": "FAQ Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "FAQ Question"
+                },
+                {
+                    "type": "textarea",
+                    "id": "answer",
+                    "label": "FAQ Answer"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Customer Support",
+            "category": "Support"
+        }
+    ]
+}
+{% endschema %}

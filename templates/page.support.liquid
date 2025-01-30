@@ -1,3 +1,6 @@
+{% comment %} Custom Support Page Template {% endcomment %}
+{{ 'support.css' | asset_url | stylesheet_tag }}
+
 <div class="support-navbar">
     <ul>
         <li><a href="#" class="tab-link" data-tab="customer-support">Customer Support</a></li>
@@ -10,33 +13,42 @@
 </div>
 
 <div class="support-content">
-    <div id="customer-support" class="tab-content">
-        <h2>Customer Support</h2>
-        <p>Here is the customer support information...</p>
-    </div>
-
-    <div id="chat" class="tab-content hidden">
-        <h2>Chat Support</h2>
-        <p>Here is how you can contact our chat support...</p>
-    </div>
-
-    <div id="shipping-returns" class="tab-content hidden">
-        <h2>Shipping & Returns</h2>
-        <p>Details about shipping and returns...</p>
-    </div>
-
-    <div id="size-guide" class="tab-content hidden">
-        <h2>Size Guide</h2>
-        <p>Size guide details...</p>
-    </div>
-
-    <div id="legal" class="tab-content hidden">
-        <h2>Legal Information</h2>
-        <p>All legal policies and terms...</p>
-    </div>
-
-    <div id="accessibility" class="tab-content hidden">
-        <h2>Accessibility</h2>
-        <p>Information about website accessibility...</p>
-    </div>
+    {% section 'customer-support' %}
+    {% render 'chat' %}
+    {% render 'shipping-returns' %}
+    {% render 'size-guide' %}
+    {% render 'legal' %}
+    {% render 'accessibility' %}
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const tabLinks = document.querySelectorAll(".tab-link");
+        const tabContents = document.querySelectorAll(".tab-content");
+    
+        tabLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+    
+                // Get the selected tab
+                let selectedTab = this.getAttribute("data-tab");
+    
+                // Hide all content sections
+                tabContents.forEach(content => {
+                    content.style.display = "none";
+                });
+    
+                // Show the selected content section
+                document.getElementById(selectedTab).style.display = "block";
+            });
+        });
+    
+        // Set default active tab (first tab)
+        if (tabContents.length > 0) {
+            tabContents.forEach(content => content.style.display = "none"); // Hide all initially
+            tabContents[0].style.display = "block"; // Show only the first one
+        }
+    });
+    
+    
+</script>

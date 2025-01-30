@@ -1,0 +1,58 @@
+/* Support Navbar - Desktop */
+.support-navbar {
+    background-color: #fff;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.support-navbar ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+    padding: 10px 20px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.support-navbar ul li {
+    flex: none;
+}
+.support-navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: all 1s ease;
+    font-size: 14px;
+    display: inline-block;
+    white-space: nowrap;
+}
+.support-navbar ul li a:hover {
+    color: #000;
+    font-weight: 900;
+}
+
+/* Mobile: Make it Scrollable */
+@media (max-width: 768px) {
+    .support-navbar {
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    }
+    .support-navbar::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome/Safari */
+    }
+    .support-navbar ul {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        padding: 10px;
+    }
+    .support-navbar ul li {
+        flex: none;
+    }
+}
