@@ -42,9 +42,9 @@
       "type": "middle-image",
       "settings": {
         "middle_image": "shopify://shop_images/mainImage.webp",
-        "image_link": "",
-        "image_width": 50,
-        "image_height": 400
+        "image_link": "shopify://collections",
+        "image_width": 100,
+        "image_height": 800
       }
     }
   },
