@@ -1,4 +1,131 @@
 <div id="legal" class="tab-content">
-    <h2>Legal Information</h2>
-    <p>All our legal policies and terms are listed here...</p>
+    <div class="legal-container">
+        <h2>LEGAL</h2>
+
+        <!-- Terms of Use -->
+        <div class="legal-item">
+            <button class="legal-title">TERMS OF USE <span class="arrow">▼</span></button>
+            <div class="legal-content">
+                <p>These terms and conditions of use (the "terms") set forth the terms on which Stüssy Inc. ("Stüssy") provides you access to this site.</p>
+                <p>You should read the terms carefully before using the site. By using the site, you acknowledge that you have read and that you agree to abide by the terms.</p>
+                
+                <h3>DISCLAIMER</h3>
+                <p>You expressly acknowledge that your use of this site is at your sole risk...</p>
+                
+                <h3>TRADEMARKS</h3>
+                <p>Stüssy is a registered trademark in the United States and other countries...</p>
+            </div>
+        </div>
+
+        <!-- Privacy Policy -->
+        <div class="legal-item">
+            <button class="legal-title">PRIVACY POLICY <span class="arrow">▼</span></button>
+            <div class="legal-content">
+                <p>Stüssy, Inc. ("Stüssy") is committed to protecting your privacy. This privacy policy covers Stüssy's treatment of personal information.</p>
+                
+                <h3>SECTION 1: PERSONAL INFORMATION WE RECEIVE ABOUT YOU AND HOW WE USE IT</h3>
+                <p>1.1. Information you give to us: We collect personal information about you when you voluntarily submit it...</p>
+                
+                <p>1.2. Information we receive from other sources: We work with third parties...</p>
+            </div>
+        </div>
+
+        <!-- Personal Info -->
+        <div class="legal-item">
+            <button class="legal-title">PERSONAL INFO <span class="arrow">▼</span></button>
+            <div class="legal-content">
+                <h3>RIGHTS UNDER THE CALIFORNIA CONSUMER PRIVACY ACT</h3>
+                <p>The California Consumer Privacy Act (CCPA) provides you with rights regarding how your data is treated...</p>
+                
+                <h3>HOW TO OPT-OUT</h3>
+                <p>By clicking on the link below, we will no longer collect or sell your personal information...</p>
+            </div>
+        </div>
+    </div>
 </div>
+
+<style>
+    /* Legal Page Container */
+.legal-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 50px 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Headings */
+.legal-container h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Legal Item (Dropdown) */
+.legal-item {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+.legal-title {
+    width: 100%;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 15px 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.legal-title .arrow {
+    transition: transform 0.3s ease;
+}
+
+/* Hidden Content */
+.legal-content {
+    display: none;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+/* Expand Animation */
+.legal-item.active .legal-content {
+    display: block;
+}
+.legal-item.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    .legal-container {
+        padding: 20px;
+    }
+    .legal-title {
+        font-size: 14px;
+    }
+}
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const legalTitles = document.querySelectorAll(".legal-title");
+    
+        legalTitles.forEach(title => {
+            title.addEventListener("click", function () {
+                const parent = this.parentElement;
+                parent.classList.toggle("active");
+    
+                // Close other sections
+                document.querySelectorAll(".legal-item").forEach(item => {
+                    if (item !== parent) {
+                        item.classList.remove("active");
+                    }
+                });
+            });
+        });
+    });
+    
+</script>

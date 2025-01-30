@@ -25,10 +25,11 @@
     color: #333;
     font-weight: 500;
     padding: 10px 15px;
-    transition: all 1s ease;
+    transition: all 0.3s ease;
     font-size: 14px;
     display: inline-block;
     white-space: nowrap;
+    text-transform: uppercase;
 }
 .support-navbar ul li a:hover {
     color: #000;

@@ -1,0 +1,219 @@
+<div class="product-page">
+    <!-- Product Image -->
+    <div class="product-image">
+        <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}">
+    </div>
+
+    <!-- Product Details -->
+    <div class="product-details">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <p class="product-price">{{ product.price | money }}</p>
+        <p class="product-color"> {{ product.selected_or_first_available_variant.option1 }}</p>
+
+        <!-- Color Variants -->
+        <div class="color-variants">
+            {% for variant in product.variants %}
+                {% if variant.featured_image %}
+                    <a href="{{ variant.url }}" class="color-option">
+                        <img src="{{ variant.featured_image | img_url: '50x50' }}" alt="{{ variant.title }}">
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <!-- Size Selection -->
+        <div class="size-selection">
+            {% for option in product.options_with_values %}
+                {% if option.name == 'Size' %}
+                    <div class="size-options">
+                        {% for value in option.values %}
+                            <label class="size-label">
+                                <input type="radio" name="size" value="{{ value }}">
+                                {{ value }}
+                            </label>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <p class="free-shipping">Free shipping in US for orders over $200 USD. Exclusions apply.</p>
+
+        <!-- Collapsible Sections -->
+        <div class="collapsible-sections">
+            <button class="collapsible">DETAILS <span class="arrow">▼</span></button>
+            <div class="collapsible-content">{{ product.description }}</div>
+
+            <button class="collapsible">SIZE GUIDE <span class="arrow">▼</span></button>
+            <div class="collapsible-content">{% render 'size-guide' %}</div>
+
+            <button class="collapsible">SHIPPING & RETURNS <span class="arrow">▼</span></button>
+            <div class="collapsible-content">{% render 'shipping-returns' %}</div>
+
+            <button class="collapsible">STYLED WITH <span class="arrow">▼</span></button>
+            <div class="collapsible-content">Related products will go here.</div>
+
+            <button class="collapsible">CHAT</button>
+        </div>
+
+        <!-- Add to Cart and Checkout Buttons -->
+        <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+            <button type="submit" class="add-to-cart">ADD TO BAG</button>
+        </form>
+
+        <a href="/checkout" class="checkout-button">CHECKOUT</a>
+    </div>
+</div>
+
+<style>
+    /* Product Page Layout */
+.product-page {
+    display: flex;
+    max-width: 1400px;
+    margin: auto;
+    padding: 50px 20px;
+    gap: 50px;
+}
+
+/* Product Image */
+.product-image img {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Product Details */
+.product-details {
+    flex: 1;
+    max-width: 500px;
+}
+.product-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+.product-price {
+    font-size: 18px;
+    margin: 10px 0;
+}
+.product-color {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Color Variants */
+.color-variants {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.color-option img {
+    width: 40px;
+    height: 40px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Size Selection */
+.size-options {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.size-label {
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Free Shipping */
+.free-shipping {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* Collapsible Sections */
+.collapsible {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.collapsible-content {
+    display: none;
+    padding: 10px 0;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+}
+.arrow {
+    transition: transform 0.3s;
+}
+.active .arrow {
+    transform: rotate(180deg);
+}
+
+/* Add to Cart & Checkout Buttons */
+.add-to-cart {
+    width: 100%;
+    background: black;
+    color: white;
+    padding: 15px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.add-to-cart:hover {
+    background: #444;
+}
+.checkout-button {
+    display: block;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid black;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.checkout-button:hover {
+    background: black;
+    color: white;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .product-page {
+        flex-direction: column;
+    }
+    .product-image img {
+        max-width: 100%;
+    }
+    .product-details {
+        max-width: 100%;
+    }
+}
+
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const collapsibles = document.querySelectorAll(".collapsible");
+    
+        collapsibles.forEach(button => {
+            button.addEventListener("click", function () {
+                this.classList.toggle("active");
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === "block" ? "none" : "block";
+            });
+        });
+    });
+    
+</script>
