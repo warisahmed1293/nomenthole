@@ -140,6 +140,22 @@
         "settings": {
           "color_scheme": "scheme-1"
         }
+      },
+      "customer-support": {
+        "type": "customer-support",
+        "blocks": {
+          "faq_9iQNKm": {
+            "type": "faq",
+            "settings": {
+              "question": "",
+              "answer": ""
+            }
+          }
+        },
+        "block_order": [
+          "faq_9iQNKm"
+        ],
+        "settings": {}
       }
     },
     "content_for_index": [],
