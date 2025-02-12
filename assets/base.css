@@ -3605,3 +3605,6 @@ details-disclosure > details {
   padding-right: 20px;
 }
 
+.section-header{
+  position: sticky !important;
+}

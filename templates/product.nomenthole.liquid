@@ -1,41 +1,44 @@
 <div class="product-page">
-    <!-- Product Image -->
-    <div class="product-image">
-        <img src="{{ product.featured_image | img_url: '1000x' }}" alt="{{ product.title }}" width="" height="">
+    <!-- Product Image Section -->
+    <div class="product-image-container">
+        <div class="product-images">
+            {% for image in product.images %}
+                <div class="product-image">
+                    <img src="{{ image | img_url: '1000x' }}" alt="Product Image">
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
-    <!-- Product Details -->
+    <!-- Product Details Section -->
     <div class="product-details">
         <h1 class="product-title">{{ product.title }}</h1>
         <p class="product-price">{{ product.price | money }}</p>
-        <p class="product-color"> {{ product.selected_or_first_available_variant.option1 }}</p>
 
-        <!-- Color Variants -->
-        <div class="color-variants">
-            {% for variant in product.variants %}
-                {% if variant.featured_image %}
-                    <a href="{{ variant.url }}" class="color-option">
-                        <img src="{{ variant.featured_image | img_url: '50x50' }}" alt="{{ variant.title }}" width="" height="">
-                    </a>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <!-- Size Selection -->
-        <div class="size-selection">
-            {% for option in product.options_with_values %}
-                {% if option.name == 'Size' %}
-                    <div class="size-options">
-                        {% for value in option.values %}
-                            <label class="size-label">
-                                <input type="radio" name="size" value="{{ value }}">
-                                {{ value }}
-                            </label>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
+        {% if product.metafields.shopify.color-pattern.value %}
+            <p class="product-color">COLOR</p>
+            <div class="color-variants">
+                {% for color in product.metafields.shopify.color-pattern.value %}
+                    <span class="color-option" style="background-color: {{ color.color }};" data-color="{{ color.color }}"></span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="error-message">No color variants available</p>
+        {% endif %}
+        
+        {% if product.metafields.shopify.size.value %}
+            <p class="product-size">SIZE</p>
+            <div class="size-options">
+                {% for size in product.metafields.shopify.size.value %}
+                    <label class="size-label">
+                        <input type="radio" name="size" value="{{ size.name }}">
+                        {{ size }}
+                    </label>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="error-message">No size variants available</p>
+        {% endif %}
 
         <p class="free-shipping">Free shipping in US for orders over $200 USD. Exclusions apply.</p>
 
@@ -63,6 +66,12 @@
         </form>
 
         <a href="/checkout" class="checkout-button">CHECKOUT</a>
+
+        <!-- Next and Previous Product Navigation -->
+        <div class="product-navigation">
+            <a href="/products/{{ product.previous.id }}" class="previous-product">Previous Product</a>
+            <a href="/products/{{ product.next.id }}" class="next-product">Next Product</a>
+        </div>
     </div>
 </div>
 
@@ -74,18 +83,42 @@
     margin: auto;
     padding: 50px 20px;
     gap: 50px;
+    position: relative; /* This ensures the sticky works properly */
 }
 
-/* Product Image */
+/* Product Image Section */
+.product-image-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.main-product-image img {
+    width: 100%;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.product-images {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 .product-image img {
     width: 100%;
-    max-width: 600px;
+    max-height: 600px;
+    object-fit: cover;
 }
 
 /* Product Details */
 .product-details {
     flex: 1;
     max-width: 500px;
+    position: sticky;
+    top: 20px;  /* Sticky effect will kick in when the top of the screen is 20px from the container */
+    z-index: 2;
+    padding-top: 20px; /* Adds some spacing at the top */
 }
 
 /* Title & Price */
@@ -94,49 +127,16 @@
     font-weight: bold;
     margin-bottom: 5px;
 }
+
 .product-price {
     font-size: 16px;
     margin-bottom: 15px;
 }
 
-/* Product Color Name */
 .product-color {
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 5px;
-}
-
-/* Color Swatches */
-.color-variants {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 15px;
-}
-.color-option img {
-    width: 40px;
-    height: 40px;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
-/* Size Selection */
-.size-selection {
-    margin-bottom: 15px;
-}
-.size-options {
-    display: flex;
-    gap: 20px;
-}
-.size-label {
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Free Shipping Text */
-.free-shipping {
-    font-size: 13px;
-    margin-bottom: 15px;
 }
 
 /* Collapsible Sections */
@@ -154,19 +154,21 @@
     align-items: center;
     border-bottom: 1px solid #ddd;
 }
+
 .collapsible-content {
     display: none;
     padding: 10px 0;
     font-size: 14px;
 }
+
 .arrow {
     transition: transform 0.3s;
 }
+
 .active .arrow {
     transform: rotate(180deg);
 }
 
-/* Add to Cart & Checkout Buttons */
 .add-to-cart {
     width: 100%;
     background: black;
@@ -179,9 +181,7 @@
     text-transform: uppercase;
     margin-top: 15px;
 }
-.add-to-cart:hover {
-    background: #444;
-}
+
 .checkout-button {
     display: block;
     text-align: center;
@@ -193,8 +193,23 @@
     text-transform: uppercase;
     font-weight: bold;
 }
-.checkout-button:hover {
-    background: black;
+
+.product-navigation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.previous-product, .next-product {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    padding: 10px 15px;
+}
+
+.previous-product:hover, .next-product:hover {
+    background-color: #444;
     color: white;
 }
 
@@ -204,33 +219,47 @@
         flex-direction: column;
         padding: 30px 15px;
     }
+
     .product-details {
         max-width: 100%;
     }
-    .color-variants {
-        gap: 8px;
-    }
-    .size-options {
-        gap: 15px;
-    }
 }
-
 
 </style>
 
-
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const collapsibles = document.querySelectorAll(".collapsible");
-    
-        collapsibles.forEach(button => {
+        // Handle Image Clicks
+        document.querySelectorAll(".product-image img").forEach((image) => {
+            image.addEventListener("click", function () {
+                const mainImage = document.querySelector(".main-product-image img");
+                mainImage.src = this.src;
+            });
+        });
+
+        // Handle Color Selection
+        document.querySelectorAll(".color-option").forEach(option => {
+            option.addEventListener("click", function () {
+                document.querySelectorAll(".color-option").forEach(opt => opt.classList.remove("selected"));
+                this.classList.add("selected");
+            });
+        });
+
+        // Handle Size Selection
+        document.querySelectorAll(".size-label input").forEach(sizeInput => {
+            sizeInput.addEventListener("click", function () {
+                document.querySelectorAll(".size-label input").forEach(input => input.parentElement.classList.remove("selected"));
+                this.parentElement.classList.add("selected");
+            });
+        });
+
+        // Handle Collapsible Sections
+        document.querySelectorAll(".collapsible").forEach(button => {
             button.addEventListener("click", function () {
                 this.classList.toggle("active");
-                const content = this.nextElementSibling;
+                let content = this.nextElementSibling;
                 content.style.display = content.style.display === "block" ? "none" : "block";
             });
         });
     });
-    
 </script>
