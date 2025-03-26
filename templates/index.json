@@ -50,6 +50,9 @@
     },
     "featured_collection_emJXUJ": {
       "type": "featured-collection",
+      "custom_css": [
+        ".card__information{display:none}"
+      ],
       "settings": {
         "title": "",
         "heading_size": "h1",
