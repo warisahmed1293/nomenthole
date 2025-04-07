@@ -84,12 +84,6 @@
             "show_dynamic_checkout": false,
             "show_gift_card_recipient": false
           }
-        },
-        "share_RNd8Cg": {
-          "type": "share",
-          "settings": {
-            "share_label": "Share"
-          }
         }
       },
       "block_order": [
@@ -98,8 +92,7 @@
         "variant_picker_BEhtA4",
         "quantity_selector_jCj33m",
         "custom_liquid_yMdUk6",
-        "buy_buttons_FpMiXX",
-        "share_RNd8Cg"
+        "buy_buttons_FpMiXX"
       ],
       "settings": {
         "product": "hoodie",
@@ -110,7 +103,7 @@
         "media_fit": "contain",
         "media_position": "left",
         "image_zoom": "none",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 36
