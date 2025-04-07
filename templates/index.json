@@ -79,11 +79,17 @@
           "type": "quantity_selector",
           "settings": {}
         },
+        "custom_liquid_yMdUk6": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"collapsible-sections\">\n\n            <button class=\"collapsible\">SIZE GUIDE <span class=\"arrow\">▼</span></button>\n            <div class=\"collapsible-content\">{% render 'size-guide' %}</div>\n\n            <button class=\"collapsible\">SHIPPING & RETURNS <span class=\"arrow\">▼</span></button>\n            <div class=\"collapsible-content\">{% render 'shipping-returns' %}</div>\n\n            <button class=\"collapsible\">STYLED WITH <span class=\"arrow\">▼</span></button>\n            <div class=\"collapsible-content\">Related products will go here.</div>\n<style>\n.collapsible {\n    width: 100%;\n    background: none;\n    border: none;\n    text-align: left;\n    font-size: 14px;\n    font-weight: bold;\n    cursor: pointer;\n    padding: 12px 0;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    border-bottom: 1px solid #ddd;\ncolor:black;\n}\n.collapsible-content {\n    display: none;\n    padding: 10px 0;\n    font-size: 14px;\ncolor:black;\n}\nspan {\ncolor:black;\n}\n\n.arrow {\n    transition: transform 0.3s;\n}\n\n.active .arrow {\n    transform: rotate(180deg);\n}\n</style>\n<script>\n\ndocument.addEventListener(\"DOMContentLoaded\", function () {\n    // Change the main product image when clicked\n    document.querySelectorAll(\".product-image img\").forEach((image) => {\n        image.addEventListener(\"click\", function () {\n            const mainImage = document.querySelector(\".main-product-image img\");\n            mainImage.src = this.src;\n        });\n    });\n});\n\n    document.addEventListener(\"DOMContentLoaded\", function () {\n\n        document.querySelectorAll(\".color-option\").forEach(option => {\n            option.addEventListener(\"click\", function () {\n                document.querySelectorAll(\".color-option\").forEach(opt => opt.classList.remove(\"selected\"));\n                this.classList.add(\"selected\");\n            });\n        });\n\n        document.querySelectorAll(\".size-label input\").forEach(sizeInput => {\n            sizeInput.addEventListener(\"click\", function () {\n                document.querySelectorAll(\".size-label input\").forEach(input => input.parentElement.classList.remove(\"selected\"));\n                this.parentElement.classList.add(\"selected\");\n            });\n        });\n\n        document.querySelectorAll(\".collapsible\").forEach(button => {\n            button.addEventListener(\"click\", function () {\n                this.classList.toggle(\"active\");\n                let content = this.nextElementSibling;\n                content.style.display = content.style.display === \"block\" ? \"none\" : \"block\";\n            });\n        });\n    });\n</script>"
+          }
+        },
         "buy_buttons_FpMiXX": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": false
           }
         },
         "share_RNd8Cg": {
@@ -99,6 +105,7 @@
         "price_gBgR9C",
         "variant_picker_BEhtA4",
         "quantity_selector_jCj33m",
+        "custom_liquid_yMdUk6",
         "buy_buttons_FpMiXX",
         "share_RNd8Cg"
       ],
