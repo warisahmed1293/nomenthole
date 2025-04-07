@@ -202,18 +202,18 @@
 
     <div class="header__icons{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header__icons--localization header-localization{% endif %}">
       
-      <a href="{{ routes.search_url }}" class="header__icon header__icon--search link focus-inset">
+      {% comment %} <a href="{{ routes.search_url }}" class="header__icon header__icon--search link focus-inset">
         <span class="search-text">SEARCH</span>
-      </a>
+      </a> {% endcomment %}
       
-      {% render 'localization-selector' %}
+      {% comment %} {% render 'localization-selector' %}
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when '@app' -%}
             {% render block %}
         {%- endcase -%}
-      {%- endfor -%}
+      {%- endfor -%} {% endcomment %}
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         <span class="bag-text">
