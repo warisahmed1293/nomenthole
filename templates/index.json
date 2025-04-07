@@ -105,7 +105,7 @@
         "product": "hoodie",
         "color_scheme": "",
         "secondary_background": false,
-        "media_size": "medium",
+        "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "media_position": "left",
