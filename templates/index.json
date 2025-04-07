@@ -95,7 +95,7 @@
         "buy_buttons_FpMiXX"
       ],
       "custom_css": [
-        ".product-form__buttons span {color: white}"
+        ".product-form__buttons span {color: white;}"
       ],
       "settings": {
         "product": "hoodie",

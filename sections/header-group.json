@@ -11,29 +11,13 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
-      "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Welcome to our store",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "announcement-bar-0"
-      ],
-      "disabled": true,
+    "custom_liquid_jaFJ9H": {
+      "type": "custom-liquid",
       "settings": {
-        "color_scheme": "scheme-1",
-        "show_line_separator": true,
-        "show_social": false,
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "enable_country_selector": false,
-        "enable_language_selector": false
+        "custom_liquid": "<div class=\"marquee-wrapper\">\n  <div class=\"marquee\">\n    HOLLYWOOD IS HELL. WHEN YOU ENTER THE WORLD, HELL IS ALL AROUND. WE LEAVE CHILDHOOD AND THE SONGS OF INNOCENCE, AND WE ENTER INTO EXPERIENCE. WHEN WE’RE YOUNG WE SEEM TO LEARN ALL THE WRONG THINGS - MIGHT IS RIGHT COMPETITION IS GOOD BEAUTY IS THE POWER, AND POWER IS THE GOAL. WE HEAR MONEY WON’T MAKE US HAPPY, AND THEN SPEND THE REST OF OUR LIVES CHASING IT. WE REBEL BECAUSE WE DON’T LIKE THE HAND WE’RE DEALT. AND WE TURN TO THE DARK BECAUSE WE DON’T KNOW ANY BETTER. LIFE IS A REFLECTION OF THE YOUTHFUL NEED TO MATTER. TO FIND A PLACE IN THIS WORLD, AND THE POINTLESS STRUGGLES THAT ENSUE. OUR YOUTH IS THE PLACE WHERE ALL THE DEMONS CONVERGE, WHERE WE ARE GIVEN MORE THAN WE KNOW HOW TO HANDLE, WHERE WE MAKE ALL THE MISTAKES. HOLLYWOOD HAS LONG BEEN THE DREAM FACTORY, AND IT’S STARS THE FALSE PROMISES OF TRANSCENDENCE. NOW ALL THE OLD STARS HAVE FALLEN, THEY ARE THE FALLEN ANGELS THAT PROVE THE ABSURDITY OF THE RACE. THE WORLD IS A SCARY PLACE, BUT WE RECOGNIZE THIS. WE GIVE THE WORLD BACK TO ITSELF, AND TELL THE YOUTH, WE UNDERSTAND.\n  </div>\n</div>\n\n<style>\n  .marquee-wrapper {\n    background-color: white;\n    overflow: hidden;\n    white-space: nowrap;\n    width: 100%;\n    padding: 1rem 0;\n  }\n\n  .marquee {\n    display: inline-block;\n    padding-left: 100%;\n    animation: scroll-left 100s linear infinite;\n    color: black;\n    font-size: 1rem;\n    font-family: Arial, sans-serif;\n  }\n\n  @keyframes scroll-left {\n    0% {\n      transform: translateX(0%);\n    }\n    100% {\n      transform: translateX(-100%);\n    }\n  }\n</style>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "header": {
@@ -60,7 +44,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "custom_liquid_jaFJ9H",
     "header"
   ]
 }
