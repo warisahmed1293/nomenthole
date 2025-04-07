@@ -51,13 +51,6 @@
     "featured_product_yt9U8W": {
       "type": "featured-product",
       "blocks": {
-        "text_tKeapE": {
-          "type": "text",
-          "settings": {
-            "text": "{{ section.settings.product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title_FGaaRR": {
           "type": "title",
           "settings": {
@@ -100,7 +93,6 @@
         }
       },
       "block_order": [
-        "text_tKeapE",
         "title_FGaaRR",
         "price_gBgR9C",
         "variant_picker_BEhtA4",
@@ -113,9 +105,9 @@
         "product": "hoodie",
         "color_scheme": "",
         "secondary_background": false,
-        "media_size": "medium",
+        "media_size": "large",
         "constrain_to_viewport": true,
-        "media_fit": "contain",
+        "media_fit": "cover",
         "media_position": "left",
         "image_zoom": "lightbox",
         "hide_variants": false,
