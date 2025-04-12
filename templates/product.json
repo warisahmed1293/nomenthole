@@ -74,6 +74,9 @@
         "custom_liquid_AD9pVW",
         "share"
       ],
+      "custom_css": [
+        ".product-form__buttons span {color: white;}"
+      ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
