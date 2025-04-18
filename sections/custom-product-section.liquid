@@ -1,0 +1,154 @@
+{% schema %}
+{
+  "name": "Custom Product Featured",
+  "settings": [
+    {
+      "type": "product",
+      "id": "selected_product",
+      "label": "Select Product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product with Sticky Info"
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.selected_product %}
+  {% assign product = all_products[section.settings.selected_product] %}
+  <section class="custom-product-page">
+    <div class="container">
+      <div class="product-grid">
+        <!-- Left: Scrollable Images -->
+        <div class="image-gallery">
+          {% for media in product.media %}
+            <div class="product-image">
+              {{ media | image_url: width: 800 | image_tag: loading: "lazy" }}
+            </div>
+          {% endfor %}
+        </div>
+
+        <!-- Right: Sticky Info -->
+        <div class="product-info">
+          <div class="info-wrapper">
+            <h1>{{ product.title }}</h1>
+            <div class="rte">{{ product.description }}</div>
+            <p class="price">{{ product.price | money }}</p>
+
+            <form method="post" action="/cart/add">
+              <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+              <button type="submit" class="btn">Add to Cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Sticky Add to Cart -->
+    <div class="mobile-add-to-cart">
+      <form method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+        <button type="submit" class="btn btn-block">Add to Cart - {{ product.price | money }}</button>
+      </form>
+    </div>
+  </section>
+
+  <style>
+    .custom-product-page {
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .product-grid {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .image-gallery {
+      flex: 1;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding-right: 1rem;
+    }
+
+    .product-image img {
+      width: 100%;
+      margin-bottom: 1rem;
+      border-radius: 10px;
+    }
+
+    .product-info {
+      flex: 1;
+      position: sticky;
+      top: 2rem;
+      align-self: start;
+    }
+
+    .info-wrapper {
+      background: #fff;
+      padding: 1.5rem;
+      border: 1px solid #eee;
+      border-radius: 10px;
+    }
+
+    .btn {
+      padding: 1rem 2rem;
+      background: #6c5ce7;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+
+    /* Mobile Styles */
+    @media (max-width: 768px) {
+      .product-grid {
+        flex-direction: column;
+      }
+
+      .image-gallery {
+        order: 1;
+        max-height: unset;
+      }
+
+      .product-info {
+        order: 2;
+        position: static;
+      }
+
+      .mobile-add-to-cart {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        padding: 1rem;
+        z-index: 999;
+        display: block;
+      }
+
+      .btn-block {
+        width: 100%;
+      }
+    }
+
+    @media (min-width: 769px) {
+      .mobile-add-to-cart {
+        display: none;
+      }
+    }
+  </style>
+{% else %}
+  <div style="padding: 2rem; text-align: center;">
+    <p><strong>Please select a product in the section settings.</strong></p>
+  </div>
+{% endif %}
