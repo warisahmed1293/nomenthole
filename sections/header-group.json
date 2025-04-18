@@ -23,7 +23,8 @@
     "header": {
       "type": "header",
       "custom_css": [
-        ".menu-drawer {background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px);}"
+        ".menu-drawer {background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(10px);}",
+        ".icon-search{display: none;}"
       ],
       "settings": {
         "logo_position": "top-center",
