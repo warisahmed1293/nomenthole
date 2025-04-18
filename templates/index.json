@@ -48,12 +48,6 @@
         "image_height": 800
       }
     },
-    "custom_product_section_DbDTVh": {
-      "type": "custom-product-section",
-      "settings": {
-        "selected_product": "hoodie"
-      }
-    },
     "featured_product_yt9U8W": {
       "type": "featured-product",
       "blocks": {
@@ -100,7 +94,6 @@
         "custom_liquid_yMdUk6",
         "buy_buttons_FpMiXX"
       ],
-      "disabled": true,
       "custom_css": [
         ".product-form__buttons span {color: white;}"
       ],
@@ -123,7 +116,6 @@
   "order": [
     "featured_collection",
     "middle_image_RBEmRB",
-    "custom_product_section_DbDTVh",
     "featured_product_yt9U8W"
   ]
 }
