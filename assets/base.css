@@ -3609,3 +3609,9 @@ details-disclosure > details {
   position: sticky !important;
 }
 
+.product__media-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
