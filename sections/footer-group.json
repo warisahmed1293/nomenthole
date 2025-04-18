@@ -25,6 +25,9 @@
       "block_order": [
         "link_list_kXLhG9"
       ],
+      "custom_css": [
+        ".footer-block__details-content{display: flex; flex-wrap: wrap; justify-content: center; gap:10px;}"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": false,
