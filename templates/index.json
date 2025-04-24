@@ -60,7 +60,7 @@
         "custom_liquid_zdMxAn": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"product-description\">\n    <ul>\n      <li>Unisex</li>\n      <li>Heavyweight 510 GSM custom knit french terry</li>\n      <li>Heavy vintage wash process w/ hand distressing and bleach splatter</li>\n      <li>Original JF artwork printed at front leg w/ holographic heat transfer stickers throughout</li>\n      <li>Signature PALY alphabet bead drawstring tips and metal D-ring</li>\n      <li>100% cotton</li>\n    </ul>\n  </div>"
+            "custom_liquid": "<div class=\"product-description\">\n    <ul>\n      <li>Unisex</li>\n      <li>Heavyweight 510 GSM custom knit french terry</li>\n      <li>Heavy vintage wash process w/ hand distressing and bleach splatter</li>\n      <li>Original JF artwork printed at front leg w/ holographic heat transfer stickers throughout</li>\n      <li>Signature PALY alphabet bead drawstring tips and metal D-ring</li>\n      <li>100% cotton</li>\n    </ul>\n  </div>\n <style>\n    .product-description {\n      font-size: 12px;\n      line-height: 1.6;\n      color: #333;\n      padding: 10px 0;\n    }\n    .product-description ul {\n      list-style-type: disc;\n      padding-left: 20px;\n      margin: 0;\n    }\n    .product-description li {\n      margin-bottom: 6px;\n    }\n  </style>"
           }
         },
         "variant_picker_BEhtA4": {
