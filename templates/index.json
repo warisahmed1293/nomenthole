@@ -57,13 +57,6 @@
             "heading_size": "h2"
           }
         },
-        "text_tftCib": {
-          "type": "text",
-          "settings": {
-            "text": "",
-            "text_style": "body"
-          }
-        },
         "variant_picker_BEhtA4": {
           "type": "variant_picker",
           "settings": {
@@ -91,7 +84,6 @@
       },
       "block_order": [
         "title_FGaaRR",
-        "text_tftCib",
         "variant_picker_BEhtA4",
         "custom_liquid_yMdUk6",
         "price_gBgR9C",
