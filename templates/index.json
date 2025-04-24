@@ -64,10 +64,6 @@
             "swatch_shape": "circle"
           }
         },
-        "quantity_selector_jCj33m": {
-          "type": "quantity_selector",
-          "settings": {}
-        },
         "custom_liquid_yMdUk6": {
           "type": "custom_liquid",
           "settings": {
@@ -89,7 +85,6 @@
       "block_order": [
         "title_FGaaRR",
         "variant_picker_BEhtA4",
-        "quantity_selector_jCj33m",
         "custom_liquid_yMdUk6",
         "price_gBgR9C",
         "buy_buttons_FpMiXX"
