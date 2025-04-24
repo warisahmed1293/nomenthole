@@ -99,8 +99,8 @@
       "custom_css": [
         ".product-form__buttons span {color: white;}",
         ".slider-buttons {display: none;}",
-        ".product__title {text-transform: uppercase;}",
-        ".product__view-details{display: none;}"
+        ".product__title {text-transform: uppercase; font-weight: normal;}",
+        ".product__view-details {display: none;}"
       ],
       "settings": {
         "product": "hoodie",
