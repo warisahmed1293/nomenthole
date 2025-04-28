@@ -101,7 +101,7 @@
         ".slider-buttons {display: none;}",
         ".product__title {text-transform: uppercase; font-weight: normal;}",
         ".product__view-details {display: none;}",
-        ".global-media-settings{border: none}"
+        ".global-media-settings {border: none;}"
       ],
       "settings": {
         "product": "hoodie",
@@ -111,7 +111,7 @@
         "constrain_to_viewport": true,
         "media_fit": "contain",
         "media_position": "left",
-        "image_zoom": "lightbox",
+        "image_zoom": "none",
         "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 0,
